@@ -1,0 +1,11 @@
+@use '../../app/styles/base.scss';
+
+.mainWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.main {
+  max-width: base.$max-width;
+  width: 100%;
+}

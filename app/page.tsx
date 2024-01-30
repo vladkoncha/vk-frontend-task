@@ -1,3 +1,9 @@
+import { MainPage } from '@/src/_pages/main';
+
 export default function Home() {
-  return <main>Main</main>;
+  return (
+    <main>
+      <MainPage />
+    </main>
+  );
 }

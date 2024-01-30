@@ -1,3 +1,9 @@
+import { FavoritesPage } from '@/src/_pages/favorites';
+
 export default function Favorites() {
-  return <main>Favorites</main>;
+  return (
+    <main>
+      <FavoritesPage />
+    </main>
+  );
 }
