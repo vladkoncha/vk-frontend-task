@@ -1,7 +1,7 @@
 'use client';
 
 import { observer } from 'mobx-react-lite';
-import { useContext, useEffect, useRef } from 'react';
+import { useContext, useRef } from 'react';
 
 import { CatsContext } from '@/src/app/store/cats-provider';
 import { fetchCats } from '@/src/features/fetch-cats';
@@ -10,38 +10,31 @@ import { useObserver } from '@/src/shared/hooks/useObserver';
 import { CatsGrid } from '@/src/widgets/cats-grid';
 
 import styles from './styles.module.scss';
-import { MainPageContainerProps } from './types';
 
-export const MainPageContainer = observer(
-  ({ initialCats }: MainPageContainerProps) => {
-    const catsStore = useContext(CatsContext);
-    const loadMoreRef = useRef<HTMLDivElement | null>(null);
+export const MainPageContainer = observer(() => {
+  const catsStore = useContext(CatsContext);
+  const loadMoreRef = useRef<HTMLDivElement | null>(null);
 
-    useEffect(() => {
-      catsStore?.addCats(initialCats);
-    }, [catsStore, initialCats]);
+  const [fetchNewCats, isLoading, error] = useFetch(async () => {
+    const newCats = await fetchCats();
+    catsStore?.addCats(newCats);
+  });
 
-    const [fetchNewCats, isLoading, error] = useFetch(async () => {
-      const newCats = await fetchCats();
-      catsStore?.addCats(newCats);
-    });
+  useObserver(loadMoreRef, true, isLoading, () => {
+    fetchNewCats();
+  });
 
-    useObserver(loadMoreRef, true, isLoading, () => {
-      fetchNewCats();
-    });
-
-    return (
-      <div className={styles.mainWrapper}>
-        <div className={styles.main}>
-          <CatsGrid
-            cats={catsStore?.getAllCats() ?? []}
-            favoriteIds={catsStore?.getFavoriteIds() ?? new Set()}
-          />
-        </div>
-        <div ref={loadMoreRef} className={styles.loadMoreCats}>
-          <span>... загружаем еще котиков ...</span>
-        </div>
+  return (
+    <div className={styles.mainWrapper}>
+      <div className={styles.main}>
+        <CatsGrid
+          cats={catsStore?.getAllCats() ?? []}
+          favoriteIds={catsStore?.getFavoriteIds() ?? new Set()}
+        />
       </div>
-    );
-  }
-);
+      <div ref={loadMoreRef} className={styles.loadMoreCats}>
+        <span>... загружаем еще котиков ...</span>
+      </div>
+    </div>
+  );
+});
