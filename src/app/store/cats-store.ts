@@ -6,10 +6,8 @@ export default class CatsStore {
   private cats = new Map<Cat['id'], Cat>();
   private favoriteIds = new Set<Cat['id']>();
 
-  constructor(initialCats: Cat[]) {
+  constructor() {
     makeAutoObservable(this);
-
-    this.addCats(initialCats);
   }
 
   addCats(newCats: Cat[]) {

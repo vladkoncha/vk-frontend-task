@@ -25,7 +25,7 @@ export default function RootLayout({
     <html lang="ru">
       <body className={roboto.className}>
         <Header />
-        <CatsProvider initialCats={[]}>{children}</CatsProvider>
+        <CatsProvider>{children}</CatsProvider>
       </body>
     </html>
   );

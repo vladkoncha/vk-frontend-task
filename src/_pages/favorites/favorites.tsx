@@ -1,5 +1,5 @@
 import { FavoritesPageContainer } from '@/src/widgets/favorites-page-container';
 
-export const FavoritesPage = async () => {
+export const FavoritesPage = () => {
   return <FavoritesPageContainer />;
 };
