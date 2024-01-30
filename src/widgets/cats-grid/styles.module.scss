@@ -1,0 +1,27 @@
+.catsGrid {
+  padding: 1.5rem;
+
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.cardWrapper {
+  position: relative;
+
+  transition: all 0.1s linear;
+
+  &:hover {
+    transform: scale(110%);
+    box-shadow: 1px 0px 10px #000000b9;
+  }
+}
+
+.favoriteButtonContainer {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+
+  height: 3rem;
+  width: 3rem;
+}

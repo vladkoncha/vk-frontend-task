@@ -1,0 +1,18 @@
+.favoriteButton {
+  border: 0;
+
+  width: 100%;
+  height: 100%;
+
+  cursor: pointer;
+
+  background: no-repeat center url('./assets/favorite-default.svg');
+
+  &:hover {
+    background: no-repeat center url('./assets/favorite-hover.svg');
+  }
+}
+
+.active {
+  background-image: url('./assets/favorite-active.svg');
+}

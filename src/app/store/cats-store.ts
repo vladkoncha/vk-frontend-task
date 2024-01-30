@@ -28,6 +28,10 @@ export default class CatsStore {
     this.favoriteIds.delete(id);
   }
 
+  getFavoriteIds() {
+    return this.favoriteIds;
+  }
+
   getFavorites() {
     const favoriteCats: Cat[] = [];
     this.favoriteIds.forEach((id) => {
