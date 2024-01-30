@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
 
 import { CatsProvider } from '@/src/app/store/cats-provider';
+import { Header } from '@/src/widgets/header';
 
 const roboto = Roboto({
   subsets: ['cyrillic'],
@@ -23,6 +24,7 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <body className={roboto.className}>
+        <Header />
         <CatsProvider initialCats={[]}>{children}</CatsProvider>
       </body>
     </html>

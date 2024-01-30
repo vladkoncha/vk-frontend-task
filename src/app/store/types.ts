@@ -1,11 +1,6 @@
 import { ReactNode } from 'react';
 
-export interface Cat {
-  id: string;
-  url: string;
-  width: number;
-  height: number;
-}
+import { Cat } from '@/src/shared/models';
 
 export interface CatsProviderProps {
   initialCats: Cat[];

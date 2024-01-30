@@ -1,6 +1,6 @@
 import { makeAutoObservable } from 'mobx';
 
-import { Cat } from './types';
+import { Cat } from '@/src/shared/models';
 
 export default class CatsStore {
   private cats = new Map<Cat['id'], Cat>();
